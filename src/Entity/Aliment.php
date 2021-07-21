@@ -47,6 +47,11 @@ class Aliment
      */
     private $lipides;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $glucides;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Aliment
     public function setLipides(float $lipides): self
     {
         $this->lipides = $lipides;
+
+        return $this;
+    }
+
+    public function getGlucides(): ?float
+    {
+        return $this->glucides;
+    }
+
+    public function setGlucides(float $glucides): self
+    {
+        $this->glucides = $glucides;
 
         return $this;
     }
