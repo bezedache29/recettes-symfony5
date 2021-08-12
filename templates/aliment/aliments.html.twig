@@ -1,0 +1,53 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Aliments{% endblock %}
+
+{% block monTitre %}Liste des aliments{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5 row mx-auto">
+
+        {% for aliment in aliments %}
+        <div class="col-3 p-2">
+            <div class="card">
+                <div class="row justify-content-center align-items-center my-3" style="height: 100px;">
+                    <img src="{{ asset('images/' ~ aliment.image) }}" class="w-50" alt="{{ aliment.nom }} image">
+                </div>
+                <hr>
+                <h2 class="text-center fw-bold">{{ aliment.nom }}</h2>
+                <hr>
+                <div class="card-body">
+                    <h5 class="card-text text-center fw-bold">Prix (Kilo) : {{ aliment.prix }} €</h5>
+                    <table class="table mt-3">
+                        <tr class="bg-primary text-white">
+                            <th scope="col">Propriété</th>
+                            <th scope="col" class="text-center">Valeur (100g)</th>
+                        </tr>
+                        <tr>
+                            <td scope="col">Calories</td>
+                            <td scope="col" class="text-center">{{ aliment.calories }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Protéines</td>
+                            <td scope="col" class="text-center">{{ aliment.proteines }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Glucides</td>
+                            <td scope="col" class="text-center">{{ aliment.glucides }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Lipides</td>
+                            <td scope="col" class="text-center">{{ aliment.lipides }}</td>
+                        </tr>
+                       
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
