@@ -2,11 +2,25 @@
 
 {% block title %}Aliments{% endblock %}
 
-{% block monTitre %}Liste des aliments{% endblock %}
+{% block monTitre %}Liste des aliments {% if (props) %}ayant moins de {{ props }}{% endif %}{% endblock %}
 
 {% block content %}
 
     <div class="container mt-5 row mx-auto">
+
+    <div class="row mb-5">
+        <div class="col">
+            <a href="{{ path('alimentsWithCalories' , {calories: 50}) }}" class="btn btn-dark">Aliments ayant moins de 50 calories au 100g</a>
+        </div>
+        <div class="col">
+            <a href="{{ path('alimentsWithGlucides' , {glucides: 10}) }}" class="btn btn-dark">Aliments ayant moins de 10 glucides au 100g</a>
+        </div>
+        <div class="col">
+            <a href="{{ path('alimentsWithProteines' , {proteines: 10}) }}" class="btn btn-dark">Aliments ayant moins de 1 proteine au 100g</a>
+        </div>
+    </div>
+
+    
 
         {% for aliment in aliments %}
         <div class="col-3 p-2">

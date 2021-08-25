@@ -19,6 +19,26 @@ class AlimentRepository extends ServiceEntityRepository
         parent::__construct($registry, Aliment::class);
     }
 
+    // public function findByCalories($calories)
+    // {
+    //     return $this->createQueryBuilder('c')
+    //         ->andWhere('c.calories <= :calories')
+    //         ->setParameter('calories', $calories)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
+    public function findByProps($props, $signe, $value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.' . $props . ' ' . $signe . ':props')
+            ->setParameter('props', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Aliment[] Returns an array of Aliment objects
     //  */
